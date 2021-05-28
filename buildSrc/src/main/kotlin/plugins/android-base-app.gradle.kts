@@ -1,14 +1,9 @@
-import org.gradle.api.JavaVersion
-
 plugins {
     id("com.android.application")
     `kotlin-android`
     `kotlin-kapt`
-    `kotlin-android-extensions`
+    `kotlin-parcelize`
     id("dagger.hilt.android.plugin")
-//    id("androidx.navigation.safeargs.kotlin")
-//    id("com.google.gms.google-services")
-//    id("com.google.firebase.crashlytics")
 }
 
 android {

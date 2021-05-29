@@ -11,16 +11,5 @@ android {
 }
 
 dependencies {
-    // Modules
     api(project(":core"))
-
-    // Libs
-    appCompat()
-    lifecycle()
-    navigation()
-    di()
-
-    base()
-    test()
-    androidTest()
 }

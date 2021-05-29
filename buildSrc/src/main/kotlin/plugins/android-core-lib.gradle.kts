@@ -1,7 +1,9 @@
 plugins {
     id("com.android.library")
     `kotlin-android`
+    `kotlin-kapt`
     `kotlin-parcelize`
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -34,6 +36,10 @@ android {
 }
 
 dependencies {
+    hilt()
+    appCompat()
+    lifecycle()
+    coil()
     base()
     test()
 }

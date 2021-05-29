@@ -11,6 +11,10 @@ android {
 }
 
 dependencies {
+    // Modules
+    api(project(":core"))
+
+    // Libs
     appCompat()
     lifecycle()
     navigation()

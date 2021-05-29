@@ -1,2 +1,2 @@
 rootProject.name = "Digital Currencies Wallet"
-include(":app")
+include(":app", ":core", ":data:network", ":data:local")

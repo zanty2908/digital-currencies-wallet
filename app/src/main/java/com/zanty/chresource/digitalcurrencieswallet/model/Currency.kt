@@ -1,4 +1,4 @@
-package com.zanty.chresource.core.model
+package com.zanty.chresource.digitalcurrencieswallet.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

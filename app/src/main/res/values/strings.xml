@@ -2,4 +2,7 @@
     <string name="app_name">Digital Currencies Wallet</string>
     <string name="title_search">Search</string>
     <string name="hint_search">Search by name</string>
+    <string name="title_reload">Reload</string>
+    <string name="content_reload">Something went wrong! Tap to reload</string>
+    <string name="sell">SELL</string>
 </resources>

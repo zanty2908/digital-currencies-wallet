@@ -3,7 +3,7 @@ package com.zanty.chresource.digitalcurrencieswallet.ui.search.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.zanty.chresource.core.model.Currency
+import com.zanty.chresource.digitalcurrencieswallet.model.Currency
 
 private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Currency>() {
     override fun areItemsTheSame(oldItem: Currency, newItem: Currency) =

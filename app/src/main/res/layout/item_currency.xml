@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.zanty.chresource.core.model.Currency" />
+            type="com.zanty.chresource.digitalcurrencieswallet.model.Currency" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,13 +76,14 @@
             android:layout_height="6dp"
             android:includeFontPadding="false"
             android:rotation="-90"
-            android:text="SELL"
+            android:text="@string/sell"
             android:textAppearance="@style/TextAppearance.VerySmall"
             android:textColor="@color/sunsetOrange"
             android:textSize="6sp"
             app:layout_constraintBottom_toBottomOf="@id/tvSell"
             app:layout_constraintEnd_toStartOf="@id/tvSell"
-            app:layout_constraintTop_toTopOf="@id/tvSell" />
+            app:layout_constraintTop_toTopOf="@id/tvSell"
+            tools:ignore="SmallSp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSell"

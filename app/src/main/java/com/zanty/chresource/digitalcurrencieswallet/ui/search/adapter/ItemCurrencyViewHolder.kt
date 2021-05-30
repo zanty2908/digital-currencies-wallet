@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zanty.chresource.core.extension.inflate
 import com.zanty.chresource.core.extension.setSafeOnClickListener
 import com.zanty.chresource.core.extension.viewHolderBinding
-import com.zanty.chresource.core.model.Currency
 import com.zanty.chresource.digitalcurrencieswallet.R
 import com.zanty.chresource.digitalcurrencieswallet.databinding.ItemCurrencyBinding
+import com.zanty.chresource.digitalcurrencieswallet.model.Currency
 
 class ItemCurrencyViewHolder(
     parent: ViewGroup

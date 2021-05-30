@@ -62,7 +62,7 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
     }
 
     private fun observeData() = with(mViewModel) {
-        currencyLive.observe(viewLifecycleOwner) {
+        currencyListLive.observe(viewLifecycleOwner) {
             val list = it ?: emptyList()
             mAdapter.submitList(list)
         }

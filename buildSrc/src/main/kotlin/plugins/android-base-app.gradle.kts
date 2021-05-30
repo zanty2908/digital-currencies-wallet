@@ -37,7 +37,7 @@ dependencies {
     appCompat()
     lifecycle()
     navigation()
-    di()
+    hilt()
 
     base()
     test()

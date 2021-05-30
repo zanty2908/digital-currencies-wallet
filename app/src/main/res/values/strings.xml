@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Digital Currencies Wallet</string>
+    <string name="title_search">Search</string>
+    <string name="hint_search">Search by name</string>
 </resources>

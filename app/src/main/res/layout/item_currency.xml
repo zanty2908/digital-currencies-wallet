@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.zanty.chresource.core.model.Currency" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon"
+            loadIcon="@{item.icon}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/spacing_normal"
+            app:layout_constraintBottom_toBottomOf="@id/tvName"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvBase"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:text="@{item.base}"
+            android:textAppearance="@style/TextAppearance.Body"
+            app:layout_constraintBottom_toTopOf="@id/tvName"
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="LTC" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{item.name}"
+            android:textAppearance="@style/TextAppearance.Body"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvSell"
+            app:layout_constraintStart_toStartOf="@id/tvBase"
+            app:layout_constraintTop_toBottomOf="@id/tvBase"
+            tools:text="Litecoin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:text="@{item.buyPriceDisplay}"
+            android:textAppearance="@style/TextAppearance.Body"
+            android:textColor="@color/caribbeanGreen"
+            app:layout_constraintBottom_toTopOf="@id/tvSell"
+            app:layout_constraintEnd_toStartOf="@id/btnFavorite"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="$187.49" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleSell"
+            android:layout_width="wrap_content"
+            android:layout_height="6dp"
+            android:includeFontPadding="false"
+            android:rotation="-90"
+            android:text="SELL"
+            android:textAppearance="@style/TextAppearance.VerySmall"
+            android:textColor="@color/sunsetOrange"
+            android:textSize="6sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvSell"
+            app:layout_constraintEnd_toStartOf="@id/tvSell"
+            app:layout_constraintTop_toTopOf="@id/tvSell" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{item.sellPriceDisplay}"
+            android:textAppearance="@style/TextAppearance.Small"
+            android:textColor="@color/sunsetOrange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvBuy"
+            app:layout_constraintTop_toBottomOf="@id/tvBuy"
+            tools:text="$187.29" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="10dp"
+            android:tint="@color/amber"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite_selector" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

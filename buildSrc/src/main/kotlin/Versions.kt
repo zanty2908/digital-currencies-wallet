@@ -6,7 +6,7 @@ object Versions {
     // Androidx
     const val APP_COMPAT = "1.2.0"
     const val RECYCLER_VIEW = "1.1.0"
-    const val CONSTRAINT_LAYOUT = "2.0.1"
+    const val CONSTRAINT_LAYOUT = "2.0.4"
     const val MATERIAL_ANDROID = "1.2.0-alpha04"
     const val MULTIDEX = "2.0.1"
 
@@ -26,8 +26,7 @@ object Versions {
 
     // Dependence Injection
     const val JAVAX_INJECT = "1"
-    const val HILT = "2.28.2-alpha"
-    const val HILT_JETPACK = "1.0.0-alpha02"
+    const val HILT = "2.35"
 
     // Image
     const val COIL = "0.13.0"

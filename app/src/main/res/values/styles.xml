@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Font styles -->
+    <style name="TextAppearance.Title" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant_bold</item>
+    </style>
+
+    <style name="TextAppearance.Title.Super">
+        <item name="android:textSize">@dimen/font_larger</item>
+    </style>
+
+    <style name="TextAppearance.Title.Large">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="TextAppearance.Title.Medium">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="TextAppearance.Title.Normal">
+        <item name="android:fontFamily">@font/assistant_semibold</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle.Large">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle.Medium">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant_bold</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="TextAppearance.Small" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="TextAppearance.Small.Bold" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant_semibold</item>
+    </style>
+
+    <style name="TextAppearance.VerySmall" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/assistant</item>
+        <item name="android:textSize">@dimen/font_tiny</item>
+    </style>
+
+</resources>

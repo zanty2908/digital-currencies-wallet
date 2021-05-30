@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#888888</color>
+    <color name="pomegranate">#F23C3C</color>
+    <color name="sunsetOrange">#FF5252</color>
+    <color name="caribbeanGreen">#06BF7C</color>
+    <color name="turquoiseBlue">#69F0AE</color>
+    <color name="amber">#FFBF00</color>
+    <color name="porcelain">#F0F1F2</color>
 </resources>

@@ -18,7 +18,7 @@ object Plugin {
         const val kotlin = "1.4.31"
         const val androidGradle = "4.2.0"
         const val navigation = "2.3.0"
-        const val daggerHiltAndroid = "2.28.1-alpha"
+        const val daggerHiltAndroid = "2.35"
         const val protobuf = "0.8.8"
         const val googleServices = "4.3.3"
         const val crashlytics = "2.3.0"

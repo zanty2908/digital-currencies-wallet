@@ -67,12 +67,6 @@ fun DependencyHandler.hilt() {
     kapt("com.google.dagger:hilt-android-compiler" version Versions.HILT)
 }
 
-fun DependencyHandler.di() {
-    hilt()
-    api("androidx.hilt:hilt-lifecycle-viewmodel" version Versions.HILT_JETPACK)
-    kapt("androidx.hilt:hilt-compiler" version Versions.HILT_JETPACK)
-}
-
 fun DependencyHandler.coil() {
     api("io.coil-kt:coil" version Versions.COIL)
 }

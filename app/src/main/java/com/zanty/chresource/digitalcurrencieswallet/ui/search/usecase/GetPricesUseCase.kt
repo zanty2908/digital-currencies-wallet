@@ -43,7 +43,7 @@ class GetPricesUseCase @Inject constructor(currencyRepository: CurrencyRepositor
     // Mapping data
     private fun GetPricesResponse?.mapToDomain(): List<Currency> {
         val data = this?.data ?: return emptyList()
-        return data.mapNotNull { it?.mapToDomain() }
+        return data.mapNotNull { it?.mapToDomain() }.sortedByDescending { it.buyPrice }
     }
 
     private fun CurrencyResponse?.mapToDomain(): Currency? {
@@ -61,7 +61,10 @@ class GetPricesUseCase @Inject constructor(currencyRepository: CurrencyRepositor
     }
 
     private val format = NumberFormat.getCurrencyInstance()
-        .apply { currency = CurrencySys("USD") }
+        .apply {
+            maximumFractionDigits = 10
+            currency = CurrencySys("USD")
+        }
 
     private fun Double?.formatCurrency() = format.format(this ?: 0.0)
 

@@ -4,5 +4,7 @@
     <string name="hint_search">Search by name</string>
     <string name="title_reload">Reload</string>
     <string name="content_reload">Something went wrong! Tap to reload</string>
+    <string name="title_empty">No results found</string>
+    <string name="content_empty">Try different query</string>
     <string name="sell">SELL</string>
 </resources>

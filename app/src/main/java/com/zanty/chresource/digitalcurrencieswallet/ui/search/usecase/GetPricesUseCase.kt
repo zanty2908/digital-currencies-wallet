@@ -11,6 +11,8 @@ import com.zanty.chresource.digitalcurrencieswallet.model.Currency
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.retryWhen
+import java.text.NumberFormat
+import java.util.Currency.getInstance as CurrencySys
 import javax.inject.Inject
 
 class GetPricesUseCase @Inject constructor(currencyRepository: CurrencyRepository) {
@@ -52,8 +54,15 @@ class GetPricesUseCase @Inject constructor(currencyRepository: CurrencyRepositor
             buyPrice ?: 0.0,
             sellPrice ?: 0.0,
             icon ?: "",
-            counter ?: ""
+            counter ?: "",
+            sellPrice.formatCurrency(),
+            buyPrice.formatCurrency()
         )
     }
+
+    private val format = NumberFormat.getCurrencyInstance()
+        .apply { currency = CurrencySys("USD") }
+
+    private fun Double?.formatCurrency() = format.format(this ?: 0.0)
 
 }

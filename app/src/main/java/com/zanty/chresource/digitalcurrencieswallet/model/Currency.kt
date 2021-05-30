@@ -11,7 +11,8 @@ data class Currency(
     val sellPrice: Double,
     val icon: String,
     val counter: String,
+    val sellPriceDisplay: String,
+    val buyPriceDisplay: String
 ) : Parcelable {
-    val sellPriceDisplay: String get() = "$$sellPrice"
-    val buyPriceDisplay: String get() = "$$buyPrice"
+    fun contains(query: String) = base.contains(query, true) || name.contains(query, true)
 }

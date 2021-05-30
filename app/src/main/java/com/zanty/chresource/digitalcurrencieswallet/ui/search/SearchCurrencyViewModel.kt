@@ -1,35 +1,46 @@
 package com.zanty.chresource.digitalcurrencieswallet.ui.search
 
-import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
-import androidx.lifecycle.viewModelScope
-import com.zanty.chresource.digitalcurrencieswallet.model.Currency
+import androidx.lifecycle.*
+import com.zanty.chresource.core.executor.PostExecutionThread
 import com.zanty.chresource.digitalcurrencieswallet.ui.search.usecase.GetPricesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchCurrencyViewModel @Inject constructor(
+    postExecutionThread: PostExecutionThread,
     private val getPricesUseCase: GetPricesUseCase
 ) : ViewModel() {
 
-    val currencyListLive: LiveData<List<Currency>> get() = getPricesUseCase.resultListLive
-    val showLoading
-        get() = getPricesUseCase.loadingLive
-            .map { if (it) View.VISIBLE else View.GONE }
-    val showReloadButton
-        get() = getPricesUseCase.errorLive
-            .map { if (it.isNullOrBlank()) View.GONE else View.VISIBLE }
+    val showLoading get() = getPricesUseCase.loadingLive
+    val showReloadButton get() = getPricesUseCase.errorLive.map { !it.isNullOrBlank() }
 
     init {
         getPricesUseCase.fetchPricesFlow.launchIn(viewModelScope)
     }
 
-    fun onClickReload(view: View) {
+    fun onClickReload() {
         getPricesUseCase.fetchPricesFlow.launchIn(viewModelScope)
     }
+
+    private val queryStringFlow = MutableStateFlow("")
+    var queryString: String
+        get() = queryStringFlow.value
+        set(value) {
+            queryStringFlow.value = value
+        }
+    val currencyListLive = queryStringFlow
+        .combine(getPricesUseCase.resultListLive.asFlow()) { query, list ->
+            if (query.isBlank()) list to false
+            else list.filter { it.contains(query) } to true
+        }
+        .flowOn(postExecutionThread.io)
+        .asLiveData(viewModelScope.coroutineContext)
+
+    val emptyList get() = currencyListLive.map { (list, hasQuery) -> list.isEmpty() && hasQuery }
 
 }

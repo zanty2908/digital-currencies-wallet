@@ -22,6 +22,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:paddingTop="72dp"
+            app:isInvisible="@{viewModel.showLoading}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
                     android:background="@color/white"
                     android:hint="@string/hint_search"
                     android:singleLine="true"
+                    android:text="@={viewModel.queryString}"
                     android:textAppearance="@style/TextAppearance.Body"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ivFavorite"
@@ -92,16 +94,55 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:isVisible="@{viewModel.emptyList &amp;&amp; !viewModel.showLoading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEmpty"
+                android:layout_width="@dimen/spacing_larger"
+                android:layout_height="@dimen/spacing_larger"
+                android:tint="@color/gray"
+                app:srcCompat="@drawable/ic_not_found" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:text="@string/title_empty"
+                android:textAppearance="@style/TextAppearance.Title.Medium"
+                android:textColor="@color/gray" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:text="@string/content_empty"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/gray" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/layoutError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
-            android:onClick="@{viewModel::onClickReload}"
+            android:onClick="@{() -> viewModel.onClickReload()}"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/spacing_large"
             android:paddingVertical="@dimen/spacing_normal"
-            android:visibility="@{viewModel.showReloadButton}"
+            app:isVisible="@{viewModel.showReloadButton}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:text="@string/title_reload"
-                android:textAppearance="@style/TextAppearance.Title.Normal"
+                android:textAppearance="@style/TextAppearance.Title.Medium"
                 android:textColor="@color/gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -136,11 +177,11 @@
 
         <ProgressBar
             android:id="@+id/pgLoading"
-            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{viewModel.showLoading}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/spacing_normal"
+            app:isVisible="@{viewModel.showLoading}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutHeader" />

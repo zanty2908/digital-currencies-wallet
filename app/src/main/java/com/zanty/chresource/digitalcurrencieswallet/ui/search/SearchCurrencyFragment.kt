@@ -31,6 +31,7 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
             layoutMain.setSafeOnClickListener { edtSearch.hideSoftKeyboard() }
             layoutHeader.onGlobalLayout { headerHeight = layoutHeader.measuredHeight * 1.5f }
 
+            rvCurrency.itemAnimator = null
             rvCurrency.adapter = mAdapter
             rvCurrency.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 private var scrollDistance = 0
@@ -63,7 +64,7 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
 
     private fun observeData() = with(mViewModel) {
         currencyListLive.observe(viewLifecycleOwner) {
-            val list = it ?: emptyList()
+            val list = it?.first ?: emptyList()
             mAdapter.submitList(list)
         }
     }

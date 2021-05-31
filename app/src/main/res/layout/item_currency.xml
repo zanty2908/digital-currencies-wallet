@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.zanty.chresource.digitalcurrencieswallet.model.Currency" />
+            type="com.zanty.chresource.data.local.model.Currency" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

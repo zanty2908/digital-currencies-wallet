@@ -21,7 +21,9 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
 
     private val mViewModel: SearchCurrencyViewModel by viewModels()
 
-    private val mAdapter: CurrencyAdapter by lazy { CurrencyAdapter() }
+    private val mAdapter: CurrencyAdapter by lazy {
+        CurrencyAdapter(mViewModel::addCurrencyToFavoriteList)
+    }
     private var headerHeight = 0f
 
     override fun FragmentSearchCurrencyBinding.initViews() {
@@ -64,7 +66,7 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
 
     private fun observeData() = with(mViewModel) {
         currencyListLive.observe(viewLifecycleOwner) {
-            val list = it?.first ?: emptyList()
+            val list = it ?: emptyList()
             mAdapter.submitList(list)
         }
     }

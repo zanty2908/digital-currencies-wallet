@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/right">
+        <Constraint
+            android:id="@id/tvTitleFavorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivFavorite"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/edtSearch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="@string/hint_search"
+            android:paddingHorizontal="@dimen/spacing_normal"
+            android:paddingVertical="@dimen/spacing_small"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivFavorite"
+            app:layout_constraintStart_toEndOf="@id/ivSearch"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/bgSearch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:alpha="1"
+            app:layout_constraintBottom_toBottomOf="@id/ivSearch"
+            app:layout_constraintEnd_toEndOf="@id/edtSearch"
+            app:layout_constraintStart_toStartOf="@id/ivSearch"
+            app:layout_constraintTop_toTopOf="@id/ivSearch" />
+        <Constraint
+            android:id="@id/bgFavorite"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:alpha="0.2"
+            app:layout_constraintBottom_toBottomOf="@id/ivFavorite"
+            app:layout_constraintEnd_toEndOf="@id/tvTitleFavorite"
+            app:layout_constraintStart_toStartOf="@id/ivFavorite"
+            app:layout_constraintTop_toTopOf="@id/ivFavorite" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/left">
+        <Constraint
+            android:id="@id/tvTitleFavorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivFavorite"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/edtSearch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="@string/hint_search"
+            android:paddingHorizontal="@dimen/spacing_normal"
+            android:paddingVertical="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivFavorite"
+            app:layout_constraintStart_toEndOf="@id/ivSearch"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/bgSearch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:alpha="0.2"
+            app:layout_constraintBottom_toBottomOf="@id/ivSearch"
+            app:layout_constraintEnd_toEndOf="@id/edtSearch"
+            app:layout_constraintStart_toStartOf="@id/ivSearch"
+            app:layout_constraintTop_toTopOf="@id/ivSearch" />
+        <Constraint
+            android:id="@id/bgFavorite"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:alpha="1"
+            app:layout_constraintBottom_toBottomOf="@id/ivFavorite"
+            app:layout_constraintEnd_toEndOf="@id/tvTitleFavorite"
+            app:layout_constraintStart_toStartOf="@id/ivFavorite"
+            app:layout_constraintTop_toTopOf="@id/ivFavorite" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/left"
+        app:constraintSetStart="@id/right"
+        app:duration="400">
+    </Transition>
+
+    <!--    &lt;!&ndash; Right to left &ndash;&gt;-->
+    <!--    <Transition-->
+    <!--        android:id="@+id/animateRightToLeft"-->
+    <!--        app:constraintSetEnd="@id/rightToLeft"-->
+    <!--        app:constraintSetStart="@id/right"-->
+    <!--        app:duration="250" />-->
+
+    <!--    <Transition-->
+    <!--        app:autoTransition="animateToEnd"-->
+    <!--        app:constraintSetEnd="@id/left"-->
+    <!--        app:constraintSetStart="@id/rightToLeft"-->
+    <!--        app:duration="100" />-->
+
+    <!--    &lt;!&ndash; Left to right &ndash;&gt;-->
+    <!--    <Transition-->
+    <!--        android:id="@+id/animateLeftToRight"-->
+    <!--        app:constraintSetEnd="@id/leftToRight"-->
+    <!--        app:constraintSetStart="@+id/left"-->
+    <!--        app:duration="250" />-->
+
+    <!--    <Transition-->
+    <!--        app:autoTransition="animateToEnd"-->
+    <!--        app:constraintSetEnd="@id/right"-->
+    <!--        app:constraintSetStart="@id/leftToRight"-->
+    <!--        app:duration="100" />-->
+
+</MotionScene>

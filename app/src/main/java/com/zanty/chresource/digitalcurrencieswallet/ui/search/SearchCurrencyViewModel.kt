@@ -1,11 +1,14 @@
 package com.zanty.chresource.digitalcurrencieswallet.ui.search
 
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.*
 import com.zanty.chresource.core.executor.PostExecutionThread
 import com.zanty.chresource.core.repository.CurrencyRepository
 import com.zanty.chresource.data.local.model.Currency
+import com.zanty.chresource.digitalcurrencieswallet.R
 import com.zanty.chresource.digitalcurrencieswallet.ui.search.usecase.GetPricesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,16 +32,39 @@ class SearchCurrencyViewModel @Inject constructor(
         getPricesUseCase.fetchPricesFlow.launchIn(viewModelScope)
     }
 
-    fun switchToFavoriteMode() {
-        mSearchViewModeFlow.value = SearchViewMode.FAVORITE
-    }
+    val switchModeTransitionListener = object : MotionLayout.TransitionListener {
+        override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
+        }
 
-    fun switchToSearchMode() {
-        mSearchViewModeFlow.value = SearchViewMode.SEARCH
+        override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
+        }
+
+        override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+            when (currentId) {
+                R.id.left -> mSearchViewModeFlow.run {
+                    if (value != SearchViewMode.FAVORITE) viewModelScope.launch {
+                        delay(100)
+                        value = SearchViewMode.FAVORITE
+                    }
+                }
+
+                R.id.right -> mSearchViewModeFlow.run {
+                    if (value != SearchViewMode.SEARCH) viewModelScope.launch {
+                        delay(100)
+                        value = SearchViewMode.SEARCH
+                    }
+                }
+            }
+        }
+
+        override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
+        }
+
     }
 
     // Mode
     private val mSearchViewModeFlow = MutableStateFlow(SearchViewMode.SEARCH)
+    val viewMode: SearchViewMode get() = mSearchViewModeFlow.value
     private val mFavoriteListFlow get() = currencyRepository.favoriteList.asFlow()
 
     // Search

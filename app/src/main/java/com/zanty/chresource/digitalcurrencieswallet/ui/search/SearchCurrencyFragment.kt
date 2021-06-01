@@ -31,7 +31,23 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
             viewModel = mViewModel
 
             layoutMain.setSafeOnClickListener { edtSearch.hideSoftKeyboard() }
-            layoutHeader.onGlobalLayout { headerHeight = layoutHeader.measuredHeight * 1.5f }
+            motionHeader.onGlobalLayout { headerHeight = motionHeader.measuredHeight * 1.5f }
+            motionHeader.addTransitionListener(mViewModel.switchModeTransitionListener)
+
+            ivSearch.setSafeOnClickListener {
+                if (mViewModel.viewMode == SearchViewMode.SEARCH) return@setSafeOnClickListener
+                edtSearch.hideSoftKeyboard()
+                motionHeader.run {
+                    transitionToStart()
+                }
+            }
+            ivFavorite.setSafeOnClickListener {
+                if (mViewModel.viewMode == SearchViewMode.FAVORITE) return@setSafeOnClickListener
+                edtSearch.hideSoftKeyboard()
+                motionHeader.run {
+                    transitionToEnd()
+                }
+            }
 
             rvCurrency.itemAnimator = null
             rvCurrency.adapter = mAdapter
@@ -58,7 +74,7 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
 
         isAnimateHeaderRunning = true
         val value = if (isShow) 0f else -headerHeight
-        mBinding.layoutHeader.animate()
+        mBinding.motionHeader.animate()
             .translationY(value)
             .withEndAction { isAnimateHeaderRunning = false }
             .start()
@@ -67,7 +83,9 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
     private fun observeData() = with(mViewModel) {
         currencyListLive.observe(viewLifecycleOwner) {
             val list = it ?: emptyList()
-            mAdapter.submitList(list)
+            mAdapter.submitList(list) {
+                mBinding.rvCurrency.scrollToPosition(0)
+            }
         }
     }
 

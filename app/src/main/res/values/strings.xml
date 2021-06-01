@@ -8,5 +8,6 @@
     <string name="content_empty">Try different query</string>
     <string name="title_favorite_empty">No items yet</string>
     <string name="content_favorite_empty">When you find an item you like, click ☆ button to see it here</string>
+    <string name="title_favorite">Favorite</string>
     <string name="sell">SELL</string>
 </resources>

@@ -7,11 +7,17 @@ Mobile tech test of CH Resource Vietnam: *Build a application to help users to e
 - Search and add favorite currencies
 - Day/night theme
 
+## Demo
+| Day | Night |
+|-----|-----|
+|![Light Theme](doc/img/light-theme.gif)|![Dark Theme](doc/img/dark-theme.gif)|
+
 ## Test-case
 [Test-case](doc/testcase.md)
 
 ## Architecture - MVVM
 <img src="/doc/img/mvvm-architecture-diagram.jpg" width="50%" height="50%"/>
+
 ### View
 - Activity, Fragment, Views
 - Binding data from ViewModel

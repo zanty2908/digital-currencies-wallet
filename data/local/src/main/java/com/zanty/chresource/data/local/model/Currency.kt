@@ -17,6 +17,4 @@ data class Currency(
     val sellPriceDisplay: String,
     val buyPriceDisplay: String,
     var isFavorite: Boolean
-) : Parcelable {
-    fun contains(query: String) = base.contains(query, true) || name.contains(query, true)
-}
+) : Parcelable

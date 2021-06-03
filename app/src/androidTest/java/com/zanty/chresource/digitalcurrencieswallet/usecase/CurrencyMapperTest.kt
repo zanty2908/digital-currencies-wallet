@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.zanty.chresource.digitalcurrencieswallet.fake.DummyData
-import com.zanty.chresource.digitalcurrencieswallet.ui.search.usecase.CurrencyMapper
+import com.zanty.chresource.digitalcurrencieswallet.ui.search.mapper.CurrencyMapper
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi

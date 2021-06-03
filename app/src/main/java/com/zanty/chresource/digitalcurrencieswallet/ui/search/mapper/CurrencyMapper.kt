@@ -1,4 +1,4 @@
-package com.zanty.chresource.digitalcurrencieswallet.ui.search.usecase
+package com.zanty.chresource.digitalcurrencieswallet.ui.search.mapper
 
 import com.zanty.chresource.data.local.model.Currency
 import com.zanty.chresource.data.network.model.response.CurrencyResponse

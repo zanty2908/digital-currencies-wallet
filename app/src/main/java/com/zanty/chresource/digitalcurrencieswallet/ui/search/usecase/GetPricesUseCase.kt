@@ -7,6 +7,7 @@ import com.zanty.chresource.core.executor.PostExecutionThread
 import com.zanty.chresource.core.network.BaseResult
 import com.zanty.chresource.core.repository.CurrencyRepository
 import com.zanty.chresource.data.local.model.Currency
+import com.zanty.chresource.digitalcurrencieswallet.ui.search.mapper.CurrencyMapper
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach

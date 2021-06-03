@@ -38,6 +38,28 @@ internal object DummyData {
             "$719.201",
             "$726.966",
             false
+        ),
+        Currency(
+            "XLM",
+            "Stellar Lumens",
+            0.40692,
+            0.40372,
+            "https://cdn.coinhako.com/assets/wallet-bch-b111cca7bd56007d7c8594096c6aa17d1295392a851dbb57785546f055adced4.png",
+            "USD",
+            "$0.40372",
+            "$0.40692",
+            false
+        ),
+        Currency(
+            "COMP",
+            "Compound",
+            404.269,
+            399.852,
+            "https://cdn.coinhako.com/assets/wallet-comp-198e2a18660d7ee7812cbd7bdedd68b39ef2692220c15e575656bdeaf430bf7e.png",
+            "USD",
+            "$0.40372",
+            "$0.40692",
+            false
         )
     )
 

@@ -7,6 +7,7 @@ import com.zanty.chresource.core.repository.CurrencyRepository
 import com.zanty.chresource.data.local.model.Currency
 import com.zanty.chresource.digitalcurrencieswallet.R
 import com.zanty.chresource.digitalcurrencieswallet.ui.search.usecase.GetPricesUseCase
+import com.zanty.chresource.digitalcurrencieswallet.ui.search.usecase.SearchUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class SearchCurrencyViewModel @Inject constructor(
     postExecutionThread: PostExecutionThread,
     private val getPricesUseCase: GetPricesUseCase,
+    private val searchUseCase: SearchUseCase,
     private val currencyRepository: CurrencyRepository
 ) : ViewModel() {
 
@@ -80,7 +82,7 @@ class SearchCurrencyViewModel @Inject constructor(
     private val mSearchListFlow = mQueryStringFlow
         .combine(getPricesUseCase.resultListLive.asFlow()) { query, list ->
             if (query.isBlank()) list
-            else list.filter { it.contains(query) }
+            else searchUseCase.searchResultList(list)(query)
         }
         .flowOn(postExecutionThread.io)
 

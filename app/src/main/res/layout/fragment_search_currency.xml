@@ -75,6 +75,7 @@
                 android:layout_marginVertical="@dimen/spacing_normal"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="14dp"
+                android:tint="@color/iconSearchColorTint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/edtSearch"
                 app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +105,7 @@
                 android:layout_height="@dimen/spacing_larger"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="14dp"
-                android:tint="@color/amber"
+                android:tint="@color/iconFavoriteColorTint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tvTitleFavorite"
                 app:layout_constraintStart_toEndOf="@id/edtSearch"
@@ -117,12 +118,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/title_favorite"
+                android:paddingEnd="@dimen/spacing_normal"
                 android:textAppearance="@style/TextAppearance.Title.Medium"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ivFavorite"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 

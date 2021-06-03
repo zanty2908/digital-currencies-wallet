@@ -18,4 +18,6 @@
     <color name="turquoiseBlue">#69F0AE</color>
     <color name="amber">#FFBF00</color>
     <color name="porcelain">#F0F1F2</color>
+    <color name="alabaster">#FBFBFB</color>
+    <color name="alabaster_dark">#7CFBFBFB</color>
 </resources>

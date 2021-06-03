@@ -22,7 +22,7 @@
     <item>
         <shape>
             <corners android:radius="@dimen/spacing_medium" />
-            <solid android:color="#FBFBFB" />
+            <solid android:color="@color/backgroundItemHeaderColor" />
         </shape>
     </item>
 </layer-list>

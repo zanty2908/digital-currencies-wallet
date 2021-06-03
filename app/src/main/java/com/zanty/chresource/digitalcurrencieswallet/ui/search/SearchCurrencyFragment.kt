@@ -30,6 +30,8 @@ class SearchCurrencyFragment : BaseFragment<FragmentSearchCurrencyBinding>(
         viewModel ?: run {
             viewModel = mViewModel
 
+            edtSearch.hideSoftKeyboard()
+
             layoutMain.setSafeOnClickListener { edtSearch.hideSoftKeyboard() }
             motionHeader.onGlobalLayout { headerHeight = motionHeader.measuredHeight * 1.5f }
             motionHeader.addTransitionListener(mViewModel.switchModeTransitionListener)

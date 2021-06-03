@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textTitleColor">@color/black</color>
+    <color name="textContentColor">@color/gray</color>
+    <color name="iconSearchColorTint">@color/white</color>
+    <color name="iconFavoriteColorTint">@color/amber</color>
+    <color name="backgroundHeaderColor">@color/black</color>
+    <color name="backgroundItemHeaderColor">@color/alabaster_dark</color>
+</resources>

@@ -4,5 +4,5 @@
     <size
         android:width="@dimen/spacing_medium"
         android:height="@dimen/spacing_medium" />
-    <solid android:color="@color/porcelain" />
+    <solid android:color="@color/alabaster_dark" />
 </shape>

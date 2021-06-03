@@ -3,6 +3,7 @@ import org.gradle.kotlin.dsl.kotlin
 
 fun DependencyHandler.appCompat() = implementations(
     "androidx.core:core-ktx" version Versions.CORE_KTX,
+    "androidx.fragment:fragment-ktx" version Versions.FRAGMENT_KTX,
     "androidx.appcompat:appcompat" version Versions.APP_COMPAT,
     "com.google.android.material:material" version Versions.MATERIAL_ANDROID,
     "androidx.constraintlayout:constraintlayout" version Versions.CONSTRAINT_LAYOUT,
@@ -31,11 +32,14 @@ fun DependencyHandler.test() {
     testImplementation(kotlin("test-junit"))
 }
 
-fun DependencyHandler.androidTest() {
-    androidTestImplementation("androidx.test:runner" version Versions.ANDROID_TEST_RUNNER)
-    androidTestImplementation("androidx.test.ext:junit" version Versions.ANDROID_TEST_EXT)
-    androidTestImplementation("androidx.test.espresso:espresso-core" version Versions.ANDROID_TEST_ESPRESSO)
-}
+fun DependencyHandler.androidTest() = androidTestImplementations(
+    "androidx.test:runner" version Versions.ANDROID_TEST_RUNNER,
+    "androidx.test.ext:junit" version Versions.ANDROID_TEST_EXT,
+    "androidx.arch.core:core-testing" version Versions.ANDROID_CORE_TEST,
+    "androidx.test.espresso:espresso-core" version Versions.ANDROID_TEST_ESPRESSO,
+    "org.jetbrains.kotlinx:kotlinx-coroutines-test" version Versions.COROUTINES_ANDROID,
+    "com.google.truth:truth:1.1"
+)
 
 fun DependencyHandler.retrofit() = apis(
     "com.squareup.retrofit2:retrofit" version Versions.RETROFIT,
@@ -54,17 +58,14 @@ fun DependencyHandler.room() {
     kapt("androidx.room:room-compiler" version Versions.ROOM)
 }
 
-fun DependencyHandler.navigation() = implementations(
-    "androidx.navigation:navigation-fragment" version Versions.NAVIGATION,
-    "androidx.navigation:navigation-fragment-ktx" version Versions.NAVIGATION,
-    "androidx.navigation:navigation-ui" version Versions.NAVIGATION,
-    "androidx.navigation:navigation-ui-ktx" version Versions.NAVIGATION,
-    "androidx.navigation:navigation-dynamic-features-fragment" version Versions.NAVIGATION
-)
-
 fun DependencyHandler.hilt() {
     api("com.google.dagger:hilt-android" version Versions.HILT)
     kapt("com.google.dagger:hilt-android-compiler" version Versions.HILT)
+}
+
+fun DependencyHandler.hiltTest() {
+    androidTestImplementation("com.google.dagger:hilt-android-testing" version Versions.HILT)
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler" version Versions.HILT)
 }
 
 fun DependencyHandler.coil() {

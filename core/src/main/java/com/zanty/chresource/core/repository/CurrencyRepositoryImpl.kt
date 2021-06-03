@@ -15,7 +15,7 @@ class CurrencyRepositoryImpl @Inject constructor(
 ) : CurrencyRepository {
 
     override fun getList() = flowOfService(postExecutionThread) {
-        currencyService.getPrices()
+        currencyService.getPrices()?.data ?: emptyList()
     }
 
     override val favoriteList: LiveData<List<Currency>>

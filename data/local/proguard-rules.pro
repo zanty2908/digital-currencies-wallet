@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class * extends androidx.room.RoomDatabase
+-dontwarn androidx.room.paging.**
+
+### Models
+-keep class com.zanty.chresource.data.local.model.** { *; }

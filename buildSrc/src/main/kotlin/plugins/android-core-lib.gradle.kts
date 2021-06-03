@@ -12,7 +12,6 @@ android {
     defaultConfig {
         minSdkVersion(Versions.MIN_ANDROID_SDK)
         targetSdkVersion(Versions.TARGET_ANDROID_SDK)
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     baseBuildType(
@@ -33,6 +32,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
+
 }
 
 dependencies {
@@ -42,4 +47,6 @@ dependencies {
     coil()
     base()
     test()
+    androidTest()
+    hiltTest()
 }

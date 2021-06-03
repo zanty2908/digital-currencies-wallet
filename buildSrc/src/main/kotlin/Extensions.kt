@@ -1,7 +1,4 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
-import org.gradle.api.artifacts.dsl.RepositoryHandler
-import org.gradle.plugin.use.PluginDependenciesSpec
-import org.gradle.plugin.use.PluginDependencySpec
 
 infix fun String.version(ver: String): String = "$this:$ver"
 
@@ -35,4 +32,12 @@ internal fun DependencyHandler.testImplementation(depName: Any) {
 
 internal fun DependencyHandler.androidTestImplementation(depName: Any) {
     add("androidTestImplementation", depName)
+}
+
+internal fun DependencyHandler.androidTestImplementations(vararg depName: Any) {
+    depName.forEach { add("androidTestImplementation", it) }
+}
+
+internal fun DependencyHandler.kaptAndroidTest(depName: Any) {
+    add("kaptAndroidTest", depName)
 }

@@ -8,4 +8,5 @@ dependencies {
     lifecycle()
     room()
     moshi()
+    hiltTest()
 }

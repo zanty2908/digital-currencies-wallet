@@ -6,20 +6,17 @@ import androidx.lifecycle.map
 import com.zanty.chresource.core.executor.PostExecutionThread
 import com.zanty.chresource.core.network.BaseResult
 import com.zanty.chresource.core.repository.CurrencyRepository
-import com.zanty.chresource.data.network.model.response.CurrencyResponse
-import com.zanty.chresource.data.network.model.response.GetPricesResponse
 import com.zanty.chresource.data.local.model.Currency
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.retryWhen
-import java.text.NumberFormat
-import java.util.Currency.getInstance as CurrencySys
 import javax.inject.Inject
 
 class GetPricesUseCase @Inject constructor(
     postExecutionThread: PostExecutionThread,
-    currencyRepository: CurrencyRepository
+    currencyRepository: CurrencyRepository,
+    private val currencyMapper: CurrencyMapper
 ) {
 
     private val mPricesResultLive = MutableLiveData<BaseResult<Any?>>()
@@ -36,7 +33,10 @@ class GetPricesUseCase @Inject constructor(
     val fetchPricesFlow = currencyRepository.getList()
         .onEach {
             if (it is BaseResult.Success) {
-                val resultList = it.data.mapToDomain()
+                val resultList = it.data
+                    .mapNotNull(currencyMapper::mapFromResponse)
+                    .sortedByDescending { item -> item.buyPrice }
+
                 currencyRepository.updateFavorite(resultList)
                 resultListLive.postValue(resultList)
             }
@@ -47,34 +47,5 @@ class GetPricesUseCase @Inject constructor(
                 .also { if (it) delay(1000) }
         }
         .flowOn(postExecutionThread.io)
-
-    // Mapping data
-    private fun GetPricesResponse?.mapToDomain(): List<Currency> {
-        val data = this?.data ?: return emptyList()
-        return data.mapNotNull { it?.mapToDomain() }.sortedByDescending { it.buyPrice }
-    }
-
-    private fun CurrencyResponse?.mapToDomain(): Currency? {
-        val base = this?.base ?: return null
-        return Currency(
-            name ?: "",
-            base,
-            buyPrice ?: 0.0,
-            sellPrice ?: 0.0,
-            icon ?: "",
-            counter ?: "",
-            sellPrice.formatCurrency(),
-            buyPrice.formatCurrency(),
-            false
-        )
-    }
-
-    private val format = NumberFormat.getCurrencyInstance()
-        .apply {
-            maximumFractionDigits = 10
-            currency = CurrencySys("USD")
-        }
-
-    private fun Double?.formatCurrency() = format.format(this ?: 0.0)
 
 }
